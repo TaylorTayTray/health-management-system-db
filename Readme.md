@@ -1,49 +1,43 @@
-Vet Clinic Database – README
+Health Management System – README
 Project Overview
-This project is a relational database system designed to manage the operations of a veterinary clinic. It handles data related to pet owners, animals, veterinarians, appointments, treatments, medications, billing, and vaccinations.
+This project is a relational database system designed to manage healthcare records across two domains: maternity care and veterinary services. It supports data tracking for patients, animals, medical professionals, appointments, treatments, medications, billing, and vaccinations.
 
-The database is built using MySQL and follows best practices in relational design, including normalization, constraints, and indexing.
+The system is built using MySQL and follows best practices in relational database design, including normalization, constraints, and indexing.
 
 Database Structure
-Owners Stores pet owner information, including contact details.
+Maternity Care Tables
+Patients Stores personal details of human patients, including contact info and emergency contacts.
 
-owner_id is the primary key
+Maternal_Records Tracks pregnancy-related data such as start dates, expected delivery, outcomes, and follow-up notes.
 
-contact is marked as UNIQUE to prevent duplicates
+Prescription Records medications prescribed during maternity care, linked to maternal records.
 
-Animals Stores details about each animal, including species, breed, and medical history.
+Lab_Tests Stores lab test results for maternity patients.
 
-Linked to Owners via owner_id
+Billing Tracks costs and payments related to maternity services.
 
-Veterinarians Stores vet information and their specialization.
+Veterinary Care Tables
+Owners Stores pet owner information.
 
-contact is marked as UNIQUE
+Animals Stores details about animals, including species, breed, and medical history.
+
+Veterinarians Stores vet information and specialization.
 
 Appointments Tracks scheduled visits between animals and veterinarians.
 
-Includes appointment date and status
+Treatments Stores types of treatments offered at the clinic.
 
-Linked to both Animals and Veterinarians
+Appointment_Treatments Links multiple treatments to a single appointment (many-to-many).
 
-Treatments Stores types of treatments offered at the clinic
+Medicines Stores medicine details.
 
-Appointment_Treatments A junction table that links multiple treatments to a single appointment (many-to-many)
+Inventory Tracks stock levels and expiry dates for each medicine.
 
-Medicines Stores medicine details, separated from inventory for better organization
+Animal_Medications Links animals to the medicines they’ve received (many-to-many).
 
-Inventory Tracks stock levels and expiry dates for each medicine
+Vaccinations Tracks vaccines administered to animals.
 
-Linked to Medicines
-
-Animal_Medications Links animals to the medicines they have received (many-to-many)
-
-Includes dosage and treatment duration
-
-Vaccinations Tracks vaccines administered to animals and their next due dates
-
-Billing Records payments for appointments
-
-Linked to both Animals and Appointments
+Billing Records payments for veterinary appointments.
 
 Constraints Used
 PRIMARY KEY on all main tables
@@ -68,6 +62,6 @@ name in Medicines
 How to Use
 Run the .sql file in a MySQL environment such as MySQL Workbench or phpMyAdmin
 
-The database VetClinicDB will be created with all tables and relationships
+The database will be created with all tables and relationships
 
 You can insert sample data and begin querying or building applications on top of it
